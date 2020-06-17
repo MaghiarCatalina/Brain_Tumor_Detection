@@ -1,0 +1,688 @@
+#: import Window kivy.core.window.Window
+<Tabs>:
+    do_default_tab: False
+    tab_width: 200
+    model1: cb_model1
+    model2: cb_model2
+
+    #--------------------------- Tab 1 -----------------------------
+    TabbedPanelItem:
+        id: tab1_id
+        text: 'Try my models'
+        ScrollView:
+            id: scroll_id
+            bar_color: [.63, .52, 1, .9]
+            bar_inactive_color: [.35,.22,.74,.9]
+            BoxLayout:
+                id: vertical_box_id
+                orientation: "vertical"
+                size_hint_y:None
+                height:Window.height*1.5
+                padding: [20,20,0,0]
+                FloatLayout:
+                    canvas:
+                        Color:
+                            rgba: .35, .35, .36, .5
+                        Rectangle:
+                            pos: 10, 1004
+                            size: 1330,30
+                    Label:
+                        pos: 20, 983
+                        text_size: (self.width, None)
+                        bold: True
+                        text: "Step 1. Please select the model you would like to use"
+                        font_size: 15
+
+                FloatLayout:
+                    canvas:
+                        Color:
+                            rgba: root.color1
+                        RoundedRectangle:
+                            pos: 70, 720
+                            size: 1000,270
+                    CheckBox:
+                        pos: 70, 820
+                        id: cb_model1
+                        active: True
+                        size_hint_x: None
+                        width: 30           # in pixels
+                        group: "model"
+                        on_active: root.checkbox_on_active()
+                    Label:
+                        pos: 120, 820
+                        bold: True
+                        text_size: (self.width, None)
+                        text: "Model 1 (default)"
+                        font_size: 16
+                FloatLayout:
+                    Label:
+                        pos: 300, 935
+                        text_size: (self.width, None)
+                        text: "Details:"
+                    Label:
+                        pos: 300, 910
+                        bold: True
+                        font_size: 16
+                        color: [.64, .46, .85, 1]
+                        text_size: (self.width, None)
+                        text: "Accuracy: 88%"
+                    Label:
+                        pos: 500, 910
+                        text_size: (self.width, None)
+                        text: "Loss: 0.27"
+                    Label:
+                        pos: 300, 880
+                        text_size: (self.width, None)
+                        text: "Val_accuracy: 81%"
+                    Label:
+                        pos: 500, 880
+                        text_size: (self.width, None)
+                        text: "Val_loss: 0.32"
+                    Label:
+                        pos: 300, 850
+                        text_size: (self.width, None)
+                        text: "Epochs: 45"
+                    Label:
+                        pos: 300, 820
+                        text_size: (self.width, None)
+                        text: "Batch size: 16"
+                    Label:
+                        pos: 300, 790
+                        text_size: (self.width, None)
+                        text: "Dropout layer rate: 0.2"
+                    Label:
+                        pos: 300, 760
+                        text_size: (self.width, None)
+                        text: "Loss function: Categorical crossentropy"
+                    Label:
+                        pos: 300, 730
+                        text_size: (self.width, None)
+                        text: "Optimizer: Adam (with learning rate=0.0001 and amsgrad=True)"
+
+                FloatLayout:
+                    canvas:
+                        Color:
+                            rgba: root.color2
+                        RoundedRectangle:
+                            pos: 70, 440
+                            size: 1000,270
+                    CheckBox:
+                        pos: 70, 540
+                        id: cb_model2
+                        size_hint_x: None
+                        width: 30           # in pixels
+                        group: "model"
+                        on_active: root.checkbox_on_active()
+                    Label:
+                        pos: 120, 540
+                        bold: True
+                        text_size: (self.width, None)
+                        text: "Model 2"
+                        font_size: 16
+                FloatLayout:
+                    Label:
+                        pos: 300, 655
+                        text_size: (self.width, None)
+                        text: "Details:"
+                    Label:
+                        pos: 300, 630
+                        bold: True
+                        color: [.64, .46, .85, 1]
+                        text_size: (self.width, None)
+                        text: "Accuracy: 72%"
+                        font_size: 16
+                    Label:
+                        pos: 500, 630
+                        text_size: (self.width, None)
+                        text: "Loss: 0.46"
+                    Label:
+                        pos: 300, 600
+                        text_size: (self.width, None)
+                        text: "Val_accuracy: 78%"
+                    Label:
+                        pos: 500, 600
+                        text_size: (self.width, None)
+                        text: "Val_loss: 0.37"
+                    Label:
+                        pos: 300, 570
+                        text_size: (self.width, None)
+                        text: "Epochs: 15"
+                    Label:
+                        pos: 300, 540
+                        text_size: (self.width, None)
+                        text: "Batch size: 16"
+                    Label:
+                        pos: 300, 510
+                        text_size: (self.width, None)
+                        text: "Dropout layer rate: 0.5"
+                    Label:
+                        pos: 300, 480
+                        text_size: (self.width, None)
+                        text: "Loss function: Categorical crossentropy"
+                    Label:
+                        pos: 300, 450
+                        text_size: (self.width, None)
+                        text: "Optimizer: Adadelta"
+                FloatLayout:
+                    canvas:
+                        Color:
+                            rgba: .35, .35, .36, .5
+                        Rectangle:
+                            pos: 10, 402
+                            size: 1330,30
+                    Label:
+                        pos: 20, 380
+                        text_size: (self.width, None)
+                        bold: True
+                        text: "Step 2. Choose an image"
+                FloatLayout:
+                    Button:
+                        pos: 70, 355
+                        id: btn_upload
+                        text: 'Upload'
+                        size_hint: None, None
+                        height:35
+                        width:100
+                        font_size: 14
+                        color: [0, 0, 0, 1]
+                        background_normal: ''
+                        background_color: [.76, .68, 1, 1]
+                        on_press: root.upload_btn_press()
+                    Label:
+                        pos: 200, 335
+                        id: label_img_name
+                        text_size: (self.width, None)
+                        text: ""
+                    Label:
+                        pos: 300, 335
+                        id: warning_upload_tab1
+                        text_size: (self.width, None)
+                        font_size: 12
+                        color: [.81, .40, .47, 1]
+                        text: ""
+                FloatLayout:
+                    canvas:
+                        Color:
+                            rgba: .35, .35, .36, .5
+                        Rectangle:
+                            pos: 10, 300
+                            size: 1330,30
+                    Label:
+                        pos: 20, 280
+                        text_size: (self.width, None)
+                        bold: True
+                        text: "Step 3. Check results"
+                FloatLayout:
+                    Button:
+                        pos: 70, 250
+                        id: btn_predict
+                        text: 'Predict'
+                        size_hint: None, None
+                        height:40
+                        width:100
+                        font_size: 14
+                        color: [0, 0, 0, 1]
+                        background_normal: ''
+                        background_color: [.76, .68, 1, 1]
+                        on_release: root.predict_btn_press()
+                FloatLayout:
+                    Label:
+                        pos: 555,237
+                        id: label_predict_result
+                        font_size: 24
+                        text_size: (self.width, None)
+                        text: ""
+                FloatLayout:
+                    size_hint_y:None
+                    height:Window.height * 0.3
+                    Image:
+                        pos: 600, 25
+                        id: image_mri
+                        source: 'D:\\Facultate\\Licenta\\Licenta\\data\\1x1.png'
+                        size_hint_x: None
+                        size_hint_y: None
+                        size: 224, 224
+                BoxLayout:
+                    Image:
+                        source: 'D:\\Facultate\\Licenta\\Licenta\\data\\1x1.png'
+
+
+
+
+
+    #---------------- Create tab 2-----------------------------
+    TabbedPanelItem:
+        text: 'Train your model'
+        ScrollView:
+            bar_color: [.63, .52, 1, .9]
+            bar_inactive_color: [.35,.22,.74,.9]
+            BoxLayout:
+                orientation: "vertical"
+                size_hint_y:None
+                height:Window.height  # * 0.7
+                padding: [20,20,0,0]
+                BoxLayout:
+                    padding: [0,0,0,20]
+                    canvas:
+                        Color:
+                            rgba: .35, .35, .36, .5
+                        Rectangle:
+                            pos: 10, 655
+                            size: 1330,30
+                    Label:
+                        bold: True
+                        text_size: (self.width, None)
+                        text: "Step 1. Choose parameters for image data generation"
+                FloatLayout:
+                    Label:
+                        pos: 70, 590
+                        text_size: (self.width, None)
+                        text: "Rotation range:"
+                    Button:
+                        pos: 200, 595
+                        id: btn_rotation_minus
+                        text: '-'
+                        size_hint: None, None
+                        height:30
+                        width:30
+                        font_size: 32
+                        color: [0, 0, 0, 1]
+                        background_normal: ''
+                        background_color: [.76, .68, 1, 1]
+                        on_press: root.rotation_down()
+                    TextInput:
+                        pos: 240, 595
+                        id: text_rotation
+                        multiline:False
+                        size_hint: None, None
+                        width:50
+                        height:30
+                        text: '0'
+                        input_filter: "int"
+                        on_focus: root.rotation_focus()
+                    Button:
+                        pos: 300, 595
+                        id: btn_rotation_plus
+                        text: '+'
+                        font_size: 24
+                        size_hint: None, None
+                        height:30
+                        width:30
+                        color: [0, 0, 0, 1]
+                        background_normal: ''
+                        background_color: [.76, .68, 1, 1]
+                        on_press: root.rotation_up()
+                    Label:
+                        pos: 350, 590
+                        id: warning_rotation
+                        text_size: (self.width, None)
+                        font_size: 12
+                        text: "Integer values between 0 and 180."
+                FloatLayout:
+                    Label:
+                        pos: 70, 530
+                        text_size: (self.width, None)
+                        text: "Brightness range:"
+                    Button:
+                        pos: 200, 535
+                        id: btn_brightness_low_minus
+                        text: '-'
+                        font_size: 32
+                        size_hint: None, None
+                        height:30
+                        width:30
+                        color: [0, 0, 0, 1]
+                        background_normal: ''
+                        background_color: [.76, .68, 1, 1]
+                        on_press: root.brightness_low_down()
+                    TextInput:
+                        pos: 240, 535
+                        id: text_brightness_low
+                        multiline:False
+                        size_hint: None, None
+                        width:50
+                        height:30
+                        text: '0.0'
+                        input_filter: "float"
+                        on_focus: root.brightness_focus()
+                    Button:
+                        pos: 300, 535
+                        id: btn_brightness_low_plus
+                        text: '+'
+                        font_size: 24
+                        size_hint: None, None
+                        height:30
+                        width:30
+                        color: [0, 0, 0, 1]
+                        background_normal: ''
+                        background_color: [.76, .68, 1, 1]
+                        on_press: root.brightness_low_up()
+                    Button:
+                        pos: 350, 535
+                        id: btn_brightness_high_minus
+                        text: '-'
+                        font_size: 32
+                        size_hint: None, None
+                        height:30
+                        width:30
+                        color: [0, 0, 0, 1]
+                        background_normal: ''
+                        background_color: [.76, .68, 1, 1]
+                        on_press: root.brightness_high_down()
+                    TextInput:
+                        pos: 390, 535
+                        id: text_brightness_high
+                        multiline:False
+                        size_hint: None, None
+                        width:50
+                        height:30
+                        text: '1.0'
+                        input_filter: "float"
+                        on_focus: root.brightness_focus()
+                    Button:
+                        pos: 450, 535
+                        id: btn_brightness_high_plus
+                        text: '+'
+                        font_size: 24
+                        size_hint: None, None
+                        height:30
+                        width:30
+                        color: [0, 0, 0, 1]
+                        background_normal: ''
+                        background_color: [.76, .68, 1, 1]
+                        on_press: root.brightness_high_up()
+                    Label:
+                        pos: 500, 530
+                        id: warning_brightness
+                        text_size: (self.width, None)
+                        font_size: 12
+                        text: "Float values between 0 and 1;  Float values between 1 and 2."
+                FloatLayout:
+                    Label:
+                        pos: 70, 470
+                        text_size: (self.width, None)
+                        text: "Zoom range:"
+                    Button:
+                        pos: 200, 475
+                        id: btn_zoom_minus
+                        text: '-'
+                        font_size: 32
+                        size_hint: None, None
+                        height:30
+                        width:30
+                        color: [0, 0, 0, 1]
+                        background_normal: ''
+                        background_color: [.76, .68, 1, 1]
+                        on_press: root.zoom_down()
+                    TextInput:
+                        pos: 240, 475
+                        id: text_zoom
+                        multiline:False
+                        size_hint: None, None
+                        width:50
+                        height:30
+                        text: '0.0'
+                        input_filter: "float"
+                        on_focus: root.zoom_focus()
+                    Button:
+                        pos: 300, 475
+                        id: btn_zoom_plus
+                        text: '+'
+                        font_size: 24
+                        size_hint: None, None
+                        height:30
+                        width:30
+                        color: [0, 0, 0, 1]
+                        background_normal: ''
+                        background_color: [.76, .68, 1, 1]
+                        on_press: root.zoom_up()
+                    Label:
+                        pos: 350, 470
+                        id: warning_zoom
+                        text_size: (self.width, None)
+                        font_size: 12
+                        text: "Float values between 0 and 1."
+
+                BoxLayout:
+                    padding: [0,20,0,0]
+                    canvas:
+                        Color:
+                            rgba: .35, .35, .36, .5
+                        Rectangle:
+                            pos: 10, 440
+                            size: 1330,30
+                    Label:
+                        bold: True
+                        text_size: (self.width, None)
+                        text: "Step 2. Choose parameters for model compilation"
+                FloatLayout:
+                    Label:
+                        pos: 70, 390
+                        text_size: (self.width, None)
+                        text: "Loss function:"
+                    Spinner:
+                        id: loss
+                        pos: 200, 400
+                        size_hint: None, None
+                        size: 200, 35
+                        text: 'categorical_crossentropy'
+                        color: [1, 1, 1, 1]
+                        background_color: [.76, .68, 1, 1]
+                        values: 'categorical_crossentropy', 'categorical_hinge', 'squared_hinge','binary_crossentropy'
+                        on_text: root.spinner_on_text()
+                FloatLayout:
+                    Label:
+                        pos: 70, 340
+                        text_size: (self.width, None)
+                        text: "Optimizer:"
+                    Spinner:
+                        id: optimizer
+                        pos: 200, 350
+                        size_hint: None, None
+                        size: 200, 35
+                        text: 'adam'
+                        color: [1, 1, 1, 1]
+                        background_color: [.76, .68, 1, 1]
+                        values: 'adam','adamax','adagrad', 'adadelta','sgd','nadam',
+                        on_text: root.spinner_on_text()
+                BoxLayout:
+                    canvas:
+                        Color:
+                            rgba: .35, .35, .36, .5
+                        Rectangle:
+                            pos: 10, 305
+                            size: 1330,30
+                    Label:
+                        bold: True
+                        text_size: (self.width, None)
+                        text: "Step 3. Train your model"
+                FloatLayout:
+                    Label:
+                        pos: 70, 260
+                        text_size: (self.width, None)
+                        text: "Epochs: "
+                    TextInput:
+                        pos: 200, 270
+                        id: text_epochs
+                        multiline:False
+                        size_hint: None, None
+                        width:150
+                        height:30
+                        text: "1"
+                        input_filter: "int"
+                        on_focus: root.epochs_focus()
+                    Label:
+                        pos: 600, 260
+                        id: epochs_warning
+                        text_size: (self.width, None)
+                        font_size: 12
+                        color: [.81, .40, .47, 1]
+                        text: ''
+                    Label:
+                        pos: 70, 225
+                        text_size: (self.width, None)
+                        text: "Model name: "
+                    TextInput:
+                        pos: 200, 235
+                        id: text_name
+                        multiline:False
+                        size_hint: None, None
+                        width:150
+                        height:30
+                        text: ""
+                        on_focus: root.name_focus()
+                    Label:
+                        pos: 600, 225
+                        id: train_warning
+                        text_size: (self.width, None)
+                        font_size: 12
+                        color: [.81, .40, .47, 1]
+                        text: ""
+
+                    Button:
+                        pos: 400, 265
+                        id: btn_train
+                        text: 'Train'
+                        size_hint: None, None
+                        height:35
+                        width:100
+                        font_size: 14
+                        color: [0, 0, 0, 1]
+                        background_normal: ''
+                        background_color: [.76, .68, 1, 1]
+                        on_press: root.verify_values()
+                        on_release: root.train_btn_press()
+                    ProgressBar:
+                        pos: 400, 240
+                        id: training_progress
+                        size_hint: None, None
+                        height:10
+                        width:100
+                    Label:
+                        pos: 510, 225
+                        id: percent_progress
+                        text_size: (self.width, None)
+                        font_size: 12
+                        color: 1, 1, 1, 1
+                        text: "In progress"
+
+                BoxLayout:
+                    padding: [0,20,0,0]
+                    canvas:
+                        Color:
+                            rgba: .35, .35, .36, .5
+                        Rectangle:
+                            pos: 10, 195
+                            size: 1330,30
+                    Label:
+                        bold: True
+                        text_size: (self.width, None)
+                        text: "Step 4. Test your model"
+                FloatLayout:
+                    Label:
+                        pos: 70, 150
+                        text_size: (self.width, None)
+                        text: "Select model:"
+                    Spinner:
+                        id: spinner_model
+                        pos: 200, 160
+                        size_hint: None, None
+                        size: 150, 30
+                        text: ''
+                        color: [1, 1, 1, 1]
+                        background_color: [.76, .68, 1, 1]
+                        on_text: root.spinner_model_on_text()
+                    Label:
+                        pos: 400, 150
+                        text_size: (self.width, None)
+                        id: warning_model_select
+                        text_size: (self.width, None)
+                        font_size: 12
+                        color: [.81, .40, .47, 1]
+                        text: ""
+                FloatLayout:
+                    Label:
+                        pos: 70, 100
+                        text_size: (self.width, None)
+                        text: "Accuracy(%):"
+                    TextInput:
+                        pos: 400, 110
+                        id: text_accuracy
+                        multiline:False
+                        size_hint: None, None
+                        width:100
+                        height:30
+                        text: ''
+                    Button:
+                        pos: 200, 110
+                        id: btn_accuracy
+                        text: 'View'
+                        size_hint: None, None
+                        height:35
+                        width:100
+                        font_size: 14
+                        color: [0, 0, 0, 1]
+                        background_normal: ''
+                        background_color: [.76, .68, 1, 1]
+                        on_release: root.accuracy_btn_press()
+                FloatLayout:
+                    Label:
+                        pos: 70,50
+                        text_size: (self.width, None)
+                        text: "Select image:"
+                    Button:
+                        pos: 200,50
+                        id: btn_upload_2
+                        text: 'Upload'
+                        size_hint: None, None
+                        height:35
+                        width:100
+                        font_size: 14
+                        color: [0, 0, 0, 1]
+                        background_normal: ''
+                        background_color: [.76, .68, 1, 1]
+                        on_release: root.upload_btn_press_tab2()
+                    Label:
+                        pos: 310, 45
+                        id: label_img_name_tab2
+                        text_size: (self.width, None)
+                        text: ""
+                    Label:
+                        pos: 400, 45
+                        id: warning_upload
+                        text_size: (self.width, None)
+                        font_size: 12
+                        color: [.81, .40, .47, 1]
+                        text: ""
+
+                FloatLayout:
+                    Label:
+                        text_size: (self.width, None)
+                        text: "Predict:"
+                        pos: 70,0
+                    Button:
+                        pos: 200,0
+                        id: btn_predict_2
+                        text: 'Predict'
+                        size_hint: None, None
+                        height:35
+                        width:100
+                        font_size: 14
+                        color: [0, 0, 0, 1]
+                        background_normal: ''
+                        background_color: [.76, .68, 1, 1]
+                        on_release: root.predict_btn_press_tab2()
+                    Label:
+                        pos: 1030, 80
+                        id: label_result_tab2
+                        text_size: (self.width, None)
+                        font_size: 24
+                        text:''
+                    Image:
+                        id: image_mri_tab2
+                        source: 'D:\\Facultate\\Licenta\\Licenta\\data\\1x1.png'
+
+                        pos: 850,10
+                        size_hint_x: None
+                        size_hint_y: None
+                        size: 180, 180
